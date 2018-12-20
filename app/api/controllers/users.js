@@ -12,7 +12,7 @@ module.exports = {
 				  if (err) 
 				  	next(err);
 				  else
-				  	res.json({status: "success", message: "User added successfully", data: null});
+				  	res.json({status: "success", message: "User added", data: null});
 				  
 				});
 	},
@@ -27,7 +27,7 @@ module.exports = {
 
 						 const token = jwt.sign({id: userInfo._id}, req.app.get('secretKey'), { expiresIn: '1h' }); 
 
-						 res.json({status:"success", message: "user found", data:{user: userInfo, token:token}});	
+						 res.json({status:"success", message: "You have been authenticated", data:{user: userInfo, token:token}});	
 
 						}else{
 

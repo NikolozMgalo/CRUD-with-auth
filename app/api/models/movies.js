@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-//Define a schema
 const Schema = mongoose.Schema;
 
 const MovieSchema = new Schema({
@@ -9,7 +8,7 @@ const MovieSchema = new Schema({
 		trim: true,		
 		required: true,
 	},
-	released_on: {
+	releasedDate: {
 		type: Date,
 		trim: true,
 		required: true
