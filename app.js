@@ -31,9 +31,9 @@ app.use('/movies', validateUser, movies);
 
 
 function validateUser(req, res, next) {
-  jwt.verify(req.headers['x-access-token'], req.app.get('secretKey'), function(err, decoded) {
+  jwt.verify(req.headers['token'], req.app.get('secretKey'), function(err, decoded) {
     if (err) {
-      res.json({status:"error", message: err.message, data:null});
+      res.json({status:"error", message: err.message});
     }else{
       
       req.body.userId = decoded.id;
@@ -58,7 +58,7 @@ app.use(function(err, req, res, next) {
   if(err.status === 404)
   	res.status(404).json({message: "Not found"});
   else	
-    res.status(500).json({message: "Something looks wrong :( !!!"});
+    res.status(500).json({message: "error has occured please double check information"});
 
 });
 

@@ -20,7 +20,7 @@ module.exports = {
 				next(err);
 			} else{
 				for (let movie of movies) {
-					moviesList.push({id: movie._id, name: movie.name, released_on: movie.released_on});
+					moviesList.push({id: movie._id, name: movie.name, releaseDate: movie.releaseDate});
 				}
 				res.json({status:"success", message: "Found some movies", data:{movies: moviesList}});
 							
@@ -35,7 +35,7 @@ module.exports = {
 			if(err)
 				next(err);
 			else {
-				res.json({status:"success", message: "Updated", data:null});
+				res.json({status:"success", message: "Updated"});
 			}
 		});
 	},
@@ -45,17 +45,17 @@ module.exports = {
 			if(err)
 				next(err);
 			else {
-				res.json({status:"success", message: "Movie has been deleted", data:null});
+				res.json({status:"success", message: "Movie has been deleted" });
 			}
 		});
 	},
 
 	create: function(req, res, next) {
-		movieModel.create({ name: req.body.name, released_on: req.body.released_on }, function (err, result) {
+		movieModel.create({ name: req.body.name, releaseDate: req.body.releaseDate }, function (err, result) {
 				  if (err) 
 				  	next(err);
 				  else
-				  	res.json({status: "success", message: "Movie created", data: null});
+				  	res.json({status: "success", message: "Movie created"});
 				  
 				});
 	},
