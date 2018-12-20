@@ -28,9 +28,7 @@ app.use('/users', users);
 app.use('/movies', validateUser, movies);
 
 
-// app.get('/favicon.ico', function(req, res) {
-//     res.sendStatus(204);
-// });
+
 
 function validateUser(req, res, next) {
   jwt.verify(req.headers['x-access-token'], req.app.get('secretKey'), function(err, decoded) {
