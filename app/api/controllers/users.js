@@ -8,11 +8,20 @@ module.exports = {
         userModel.create({  
             email: req.body.email, 
             password: req.body.password 
-        }, function (err, result) {
+        }, function (err, userInfo) {
 				  if (err) 
-				  	next(err);
-				  else
-				  	res.json({status: "success", message: "User added"});
+					  next(err);
+					else {
+
+						if(userInfo != null && bcrypt.compareSync(req.body.password, userInfo.password)) {
+
+						 const token = jwt.sign({id: userInfo._id}, req.app.get('secretKey'), { expiresIn: '1h' }); 
+
+						 res.json({status:"success", message: "You have succesfully created account", data:{user: userInfo, token:token}});	
+
+						}
+					}
+				  	//res.json({status: "success", message: "User added"});
 				  
 				});
 	},
