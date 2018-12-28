@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const mongoDB = 'mongodb://user123456:user123456@ds129914.mlab.com:29914/auth';
+const mongoDB = 'mongodb://<username>:<userpassword>@ds129914.mlab.com:29914/auth';
 mongoose.connect(mongoDB);
 mongoose.Promise = global.Promise;
 
